@@ -21,13 +21,21 @@ public class ChatApp {
 			server = new Server(8080);
 			JOptionPane.showMessageDialog(null, "Server started at: " + server.getIPAddress() + "\nPort: " + server.getPort());
 			
+			String res = JOptionPane.showInputDialog("Send a message:");
 			
+			while(messageSent == true){
+				
+			}
+			
+			server.start();
 		}else{
 			String ipSTR = JOptionPane.showInputDialog("Enter IP address: ");
 			String portSTR = JOptionPane.showInputDialog("Enter Port Number: ");
 			int port = Integer.parseInt(portSTR);
 			client = new Client(ipSTR, port);
 			
+			
+			client.start();
 		}
 		
 	}
