@@ -11,7 +11,9 @@ import _00_Click_Chat.networking.Server;
 
 public class ChatApp {
 	Server server;
+	String severInput;
 	Client client; 
+	String clientInput;
 	boolean messageSent;
 	
 public static void main(String[] args) {
@@ -24,8 +26,15 @@ public static void main(String[] args) {
 			server = new Server(8080);
 			System.out.println("Sever created");
 			JOptionPane.showMessageDialog(null, "Server started at: " + server.getIPAddress() + "\nPort: " + server.getPort());
-			
-			//String res = JOptionPane.showInputDialog("Send a message:");
+			if(messageSent == false){
+				severInput = JOptionPane.showInputDialog("Send a message:");
+				server.sendMess(severInput);
+				messageSent = true;
+			}else{
+				severInput = JOptionPane.showInputDialog(clientInput);
+				server.sendMess(severInput);
+				messageSent = true;
+			}
 			
 			server.start();
 			
@@ -34,8 +43,19 @@ public static void main(String[] args) {
 			String portSTR = JOptionPane.showInputDialog("Enter Port Number: ");
 			int port = Integer.parseInt(portSTR);
 			client = new Client(ipSTR, port);
+			System.out.println("Client created");
+			if(messageSent == false){
+				clientInput = JOptionPane.showInputDialog("Send a message:");
+				client.sendMess(clientInput);
+				messageSent = true;
+			}else{
+				clientInput = JOptionPane.showInputDialog(severInput);
+				client.sendMess(clientInput);
+				messageSent =true;
+			}
 			
 			client.start();
+			
 		}
 		
 	}
