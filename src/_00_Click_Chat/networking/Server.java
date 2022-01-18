@@ -34,8 +34,10 @@ public class Server {
 			os = new ObjectOutputStream(connection.getOutputStream());
 			is = new ObjectInputStream(connection.getInputStream());
 
-			os.flush();
+			//os.flush();
+			//System.out.println("Server created");
 
+				
 			while (connection.isConnected()) {
 				
 				try {

@@ -24,7 +24,8 @@ public static void main(String[] args) {
 		int response = JOptionPane.showConfirmDialog(null, "Would you like to host a connection?", "Chat", JOptionPane.YES_NO_OPTION);
 		if(response == JOptionPane.YES_OPTION){
 			server = new Server(8080);
-			System.out.println("Sever created");
+			server.start();
+			//System.out.println("Sever created");
 			JOptionPane.showMessageDialog(null, "Server started at: " + server.getIPAddress() + "\nPort: " + server.getPort());
 			if(messageSent == false){
 				severInput = JOptionPane.showInputDialog("Send a message:");
@@ -36,14 +37,15 @@ public static void main(String[] args) {
 				messageSent = true;
 			}
 			
-			server.start();
+		
 			
 		}else{
 			String ipSTR = JOptionPane.showInputDialog("Enter IP address: ");
 			String portSTR = JOptionPane.showInputDialog("Enter Port Number: ");
 			int port = Integer.parseInt(portSTR);
 			client = new Client(ipSTR, port);
-			System.out.println("Client created");
+			client.start();
+			//System.out.println("Client created");
 			if(messageSent == false){
 				clientInput = JOptionPane.showInputDialog("Send a message:");
 				client.sendMess(clientInput);
@@ -54,7 +56,7 @@ public static void main(String[] args) {
 				messageSent =true;
 			}
 			
-			client.start();
+			
 			
 		}
 		
