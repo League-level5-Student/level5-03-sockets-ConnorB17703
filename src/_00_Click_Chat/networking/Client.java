@@ -24,9 +24,10 @@ public class Client {
 
 	public void start(){
 		try {
-
+			
 			connection = new Socket(ip, port);
-
+			System.out.println("asdjf");
+			
 			os = new ObjectOutputStream(connection.getOutputStream());
 			is = new ObjectInputStream(connection.getInputStream());
 

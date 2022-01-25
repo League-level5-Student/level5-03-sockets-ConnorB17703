@@ -28,22 +28,22 @@ public class Server {
 		try {
 			server = new ServerSocket(port, 100);
 
+			System.out.println("no connection");
 			connection = server.accept();
-
+			System.out.println("connected");
 			
 			os = new ObjectOutputStream(connection.getOutputStream());
 			is = new ObjectInputStream(connection.getInputStream());
 
-			//os.flush();
+			os.flush();
 			//System.out.println("Server created");
 
 				
 			while (connection.isConnected()) {
-				
 				try {
 					JOptionPane.showMessageDialog(null, is.readObject());
 					System.out.println(is.readObject());
-				}catch(EOFException e) {
+					}catch(EOFException e) {
 					JOptionPane.showMessageDialog(null, "Connection Lost");
 					System.exit(0);
 				}
@@ -78,6 +78,7 @@ public class Server {
 	}
 	
 	public void sendMess(String message){
+		
 		try{
 			if(os != null){
 				os.writeObject(message);
