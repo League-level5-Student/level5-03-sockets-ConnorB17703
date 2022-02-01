@@ -29,6 +29,7 @@ public class Server {
 			server = new ServerSocket(port, 100);
 
 			System.out.println("no connection");
+			JOptionPane.showMessageDialog(null, "Server started at: " + getIPAddress() + "\nPort: " + getPort());
 			connection = server.accept();
 			System.out.println("connected");
 			
@@ -43,7 +44,8 @@ public class Server {
 				try {
 					JOptionPane.showMessageDialog(null, is.readObject());
 					System.out.println(is.readObject());
-					}catch(EOFException e) {
+					
+				}catch(EOFException e) {
 					JOptionPane.showMessageDialog(null, "Connection Lost");
 					System.exit(0);
 				}

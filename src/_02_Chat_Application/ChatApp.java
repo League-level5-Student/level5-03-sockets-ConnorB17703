@@ -18,6 +18,10 @@ public class ChatApp {
 	
 public static void main(String[] args) {
 	new ChatApp(); 
+	//Next time with the use of VNC, write code in the client to constantly send messages to the server. 
+	//Make sure the server is receiving the messages.
+	
+	
 }
 	
 	public ChatApp(){
@@ -26,7 +30,7 @@ public static void main(String[] args) {
 			server = new Server(8080);
 			server.start();
 			//System.out.println("Sever created");
-			JOptionPane.showMessageDialog(null, "Server started at: " + server.getIPAddress() + "\nPort: " + server.getPort());
+			//JOptionPane.showMessageDialog(null, "Server started at: " + server.getIPAddress() + "\nPort: " + server.getPort());
 			if(messageSent == false){
 				severInput = JOptionPane.showInputDialog("Send a message:");
 				server.sendMess(severInput);

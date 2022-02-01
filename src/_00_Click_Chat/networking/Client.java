@@ -31,12 +31,15 @@ public class Client {
 			os = new ObjectOutputStream(connection.getOutputStream());
 			is = new ObjectInputStream(connection.getInputStream());
 
-			//os.flush();
+			os.flush();
 			//System.out.println("Client created");
 			while (connection.isConnected()) {
 				try {
 					JOptionPane.showMessageDialog(null, is.readObject());
 					System.out.println(is.readObject());
+					sendMess("message");
+					
+					
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
