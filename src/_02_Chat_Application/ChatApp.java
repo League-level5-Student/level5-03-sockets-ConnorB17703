@@ -18,8 +18,9 @@ public class ChatApp {
 	
 public static void main(String[] args) {
 	new ChatApp(); 
-	//Next time with the use of VNC, write code in the client to constantly send messages to the server. 
-	//Make sure the server is receiving the messages.
+	//From last time you fixed the connecting issue and both the server and client are able to communicate with each other
+	//You need to fix the user interface so that its not as "junky" 
+	//Like create a chat room using the console or JFrames
 	
 	
 }

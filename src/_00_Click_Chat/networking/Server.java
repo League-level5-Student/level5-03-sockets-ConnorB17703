@@ -42,8 +42,10 @@ public class Server {
 				
 			while (connection.isConnected()) {
 				try {
-					JOptionPane.showMessageDialog(null, is.readObject());
-					System.out.println(is.readObject());
+					//JOptionPane.showMessageDialog(null, is.readObject());
+					//System.out.println(is.readObject());
+					String res = JOptionPane.showInputDialog(is.readObject());
+					sendMess(res);
 					
 				}catch(EOFException e) {
 					JOptionPane.showMessageDialog(null, "Connection Lost");
@@ -90,4 +92,40 @@ public class Server {
 			e.printStackTrace();
 		}
 	}
+	public void input(){
+		while (connection.isConnected()) {
+			try {
+				//JOptionPane.showMessageDialog(null, is.readObject());
+				//System.out.println(is.readObject());
+				String response = JOptionPane.showInputDialog("Say something!");
+				sendMess(response);
+				
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+	}
+}
+	
+	public void output(){
+		while (connection.isConnected()) {
+			try {
+				Object in = is.readObject();
+				JOptionPane.showMessageDialog(null, in);
+				System.out.println(in);
+				
+				
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+
+
+
+
+}
 }
