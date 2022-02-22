@@ -1,5 +1,6 @@
 package _02_Chat_Application;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -7,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import _00_Click_Chat.networking.Client;
@@ -27,10 +29,12 @@ public class ChatApp implements ActionListener {
 	JPanel panel;
 	JButton button;
 	JTextField textField;
+	JTextArea textArea;
 	
 public static void main(String[] args) {
 	new ChatApp(); 
-	//you were able to create a window for both the server and client. Now you need to write code to clean up the format
+	//Last time you were able to make windows for both the client and server and clean them up. You were able to sent messages but
+	//you need to add the messages onto the textArea then you're done. 
 	
 }
 	
@@ -39,12 +43,15 @@ public static void main(String[] args) {
 		frame = new JFrame("Chat App");
 		panel = new JPanel();
 		button = new JButton("Send Message"); 
-		textField = new JTextField();
+		textField = new JTextField(15);
+		textArea = new JTextArea();
 		
-		
-		frame.add(panel);
+		button.addActionListener(this);
+		frame.add(panel, BorderLayout.NORTH);
 		panel.add(button);
 		panel.add(textField);
+		frame.add(textArea, BorderLayout.CENTER);
+		
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(500, 500);
@@ -58,15 +65,15 @@ public static void main(String[] args) {
 			
 			server = new Server(8080);
 			server.start();
-			if(messageSent == false){
-				severInput = JOptionPane.showInputDialog("Send a message:");
-				server.sendMess(severInput);
-				messageSent = true;
-			}else{
-				severInput = JOptionPane.showInputDialog(clientInput);
-				server.sendMess(severInput);
-				messageSent = true;
-			}
+//			if(messageSent == false){
+//				severInput = textField.getText();
+//				server.sendMess(severInput);
+//				messageSent = true;
+//			}else{
+//				severInput = JOptionPane.showInputDialog(clientInput);
+//				server.sendMess(severInput);
+//				messageSent = true;
+//			}
 			
 		
 			
@@ -80,18 +87,16 @@ public static void main(String[] args) {
 			client = new Client(ipSTR, port);
 			client.start();
 			//System.out.println("Client created");
-			if(messageSent == false){
-				//clientInput = JOptionPane.showInputDialog("Send a message:");
-				client.sendMess(clientInput);
-				messageSent = true;
-			}else{
-				clientInput = JOptionPane.showInputDialog(severInput);
-				client.sendMess(clientInput);
-				messageSent =true;
-			}
-			
-			
-			
+//			if(messageSent == false){
+//				clientInput = textField.getText();
+//				client.sendMess(clientInput);
+//				messageSent = true;
+//			}else{
+//				clientInput = JOptionPane.showInputDialog(severInput);
+//				client.sendMess(clientInput);
+//				messageSent =true;
+//			}
+//			
 		}
 		
 	}
@@ -99,8 +104,24 @@ public static void main(String[] args) {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
+		if(messageSent == false){
+			severInput = textField.getText();
+			server.sendMess(severInput);
+			
+			clientInput = textField.getText();
+			client.sendMess(clientInput);
+			messageSent = true;
+		}else{
+			textArea.setText("Server: " + textArea.getText());
+			severInput = textArea.getText();
+			server.sendMess(severInput);
+			
+			textArea.setText("Client: " + textArea.getText());
+			client.sendMess(clientInput);
+			messageSent = true;
+		}
 		
-	}
 	
-	
+		}
+		
 }

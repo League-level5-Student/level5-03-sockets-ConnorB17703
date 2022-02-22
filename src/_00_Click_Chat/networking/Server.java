@@ -92,22 +92,20 @@ public class Server {
 			e.printStackTrace();
 		}
 	}
-	public void input(){
-		while (connection.isConnected()) {
-			try {
-				//JOptionPane.showMessageDialog(null, is.readObject());
-				//System.out.println(is.readObject());
-				String response = JOptionPane.showInputDialog("Say something!");
-				sendMess(response);
-				
-				
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-	}
-}
+//	public void input(){
+//		while (connection.isConnected()) {
+//			try {
+//				String response = JOptionPane.showInputDialog("Say something!");
+//				sendMess(response);
+//				
+//				
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		
+//	}
+//}
 	
 	public void output(){
 		while (connection.isConnected()) {
