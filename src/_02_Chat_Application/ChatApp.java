@@ -33,8 +33,8 @@ public class ChatApp implements ActionListener {
 	
 public static void main(String[] args) {
 	new ChatApp(); 
-	//Last time you were able to make windows for both the client and server and clean them up. You were able to sent messages but
-	//you need to add the messages onto the textArea then you're done. 
+	//You need to figure out why there's errors whenever you try to send a message and why you can could send messages to the client 
+	
 	
 }
 	
@@ -111,14 +111,15 @@ public static void main(String[] args) {
 			clientInput = textField.getText();
 			client.sendMess(clientInput);
 			messageSent = true;
-		}else{
-			textArea.setText("Server: " + textArea.getText());
-			severInput = textArea.getText();
-			server.sendMess(severInput);
 			
-			textArea.setText("Client: " + textArea.getText());
-			client.sendMess(clientInput);
-			messageSent = true;
+		}else{
+			textArea.setText("Server: " + textField.getText());
+//			severInput = textArea.getText();
+//			server.sendMess(severInput);
+			
+			textArea.setText("Client: " + textField.getText());
+//			client.sendMess(clientInput);
+//			messageSent = true;
 		}
 		
 	

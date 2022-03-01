@@ -39,6 +39,7 @@ public class Server {
 			os.flush();
 			//System.out.println("Server created");
 
+			output();
 				
 			while (connection.isConnected()) {
 				try {
