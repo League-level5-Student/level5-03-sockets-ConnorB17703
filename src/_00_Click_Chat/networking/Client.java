@@ -26,7 +26,7 @@ public class Client {
 		try {
 			
 			connection = new Socket(ip, port);
-			System.out.println("asdjf");
+			System.out.println("client started");
 			
 			os = new ObjectOutputStream(connection.getOutputStream());
 			is = new ObjectInputStream(connection.getInputStream());
@@ -89,7 +89,7 @@ public class Client {
 		while (connection.isConnected()) {
 			try {
 				Object in = is.readObject();
-				JOptionPane.showMessageDialog(null, in);
+				//JOptionPane.showMessageDialog(null, in);
 				System.out.println(in);
 				
 				

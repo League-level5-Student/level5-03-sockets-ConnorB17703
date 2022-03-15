@@ -112,7 +112,7 @@ public class Server {
 		while (connection.isConnected()) {
 			try {
 				Object in = is.readObject();
-				JOptionPane.showMessageDialog(null, in);
+				//JOptionPane.showMessageDialog(null, in);
 				System.out.println(in);
 				
 				

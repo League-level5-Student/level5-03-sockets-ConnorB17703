@@ -33,7 +33,10 @@ public class ChatApp implements ActionListener {
 	
 public static void main(String[] args) {
 	new ChatApp(); 
-	//You need to figure out why there's errors whenever you try to send a message and why you can could send messages to the client 
+	//It seems whenever you make a window for either of the server or client, in the actionPerformed method,
+	//sever.sendMess() or client.sendMess() is sending nothing and is causing that error. How do you solve it?
+	//Also, I am some reason able to send messages from the server to the client, but can't send messages from the 
+	//client to the server. 
 	
 	
 }
@@ -110,6 +113,8 @@ public static void main(String[] args) {
 			
 			clientInput = textField.getText();
 			client.sendMess(clientInput);
+			
+			
 			messageSent = true;
 			
 		}else{
