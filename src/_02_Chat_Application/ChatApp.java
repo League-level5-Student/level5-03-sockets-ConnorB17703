@@ -33,10 +33,7 @@ public class ChatApp implements ActionListener {
 	
 public static void main(String[] args) {
 	new ChatApp(); 
-	//It seems whenever you make a window for either of the server or client, in the actionPerformed method,
-	//sever.sendMess() or client.sendMess() is sending nothing and is causing that error. How do you solve it?
-	//Also, I am some reason able to send messages from the server to the client, but can't send messages from the 
-	//client to the server. 
+	//There's no more errors, but the the messages are only being sent only to each other and printed only once
 	
 	
 }
@@ -108,23 +105,30 @@ public static void main(String[] args) {
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		if(messageSent == false){
+			
+			if(frame.getTitle().equals("Chat App: Server")){
 			severInput = textField.getText();
 			server.sendMess(severInput);
 			
+			}else{
 			clientInput = textField.getText();
 			client.sendMess(clientInput);
-			
+			}
 			
 			messageSent = true;
 			
 		}else{
+			
+			if(frame.getTitle().equals("Chat App: Server")){
 			textArea.setText("Server: " + textField.getText());
 //			severInput = textArea.getText();
 //			server.sendMess(severInput);
+			}else{
 			
 			textArea.setText("Client: " + textField.getText());
 //			client.sendMess(clientInput);
 //			messageSent = true;
+			}
 		}
 		
 	
