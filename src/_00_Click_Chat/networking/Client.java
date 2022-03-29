@@ -36,7 +36,7 @@ public class Client {
 //			Thread thread = new Thread(()-> input());
 //			thread.start();
 			
-			output();
+			messageListener();
 			
 			
 		} catch (Exception e) {
@@ -85,13 +85,14 @@ public class Client {
 //		
 //	}
 //}
-	public void output(){
+	public void messageListener(){
 		while (connection.isConnected()) {
 			try {
 				Object in = is.readObject();
 				//JOptionPane.showMessageDialog(null, in);
 				System.out.println(in);
-				
+			
+
 				
 				
 			} catch (Exception e) {

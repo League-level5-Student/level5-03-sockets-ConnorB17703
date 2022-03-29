@@ -39,7 +39,7 @@ public class Server {
 			os.flush();
 			//System.out.println("Server created");
 
-			output();
+			messageListener();
 				
 			while (connection.isConnected()) {
 				try {
@@ -47,6 +47,7 @@ public class Server {
 					//System.out.println(is.readObject());
 					String res = JOptionPane.showInputDialog(is.readObject());
 					sendMess(res);
+					
 					
 				}catch(EOFException e) {
 					JOptionPane.showMessageDialog(null, "Connection Lost");
@@ -108,7 +109,7 @@ public class Server {
 //	}
 //}
 	
-	public void output(){
+	public void messageListener(){
 		while (connection.isConnected()) {
 			try {
 				Object in = is.readObject();
