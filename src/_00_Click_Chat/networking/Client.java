@@ -60,6 +60,7 @@ public class Client {
 	
 	
 	public void sendMess(String message){
+		
 		try{
 			if(os != null){
 				os.writeObject(message);
@@ -68,6 +69,7 @@ public class Client {
 		}catch(IOException e){
 			e.printStackTrace();
 		}
+		
 	}
 //	public void input(){
 //		while (connection.isConnected()) {

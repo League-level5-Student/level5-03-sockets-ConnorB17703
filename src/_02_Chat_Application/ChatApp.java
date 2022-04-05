@@ -33,8 +33,9 @@ public class ChatApp implements ActionListener {
 	
 public static void main(String[] args) {
 	new ChatApp(); 
-	//There's no more errors, but the the messages are only being sent only to each other and printed only once
-	
+	//There's no more errors, but the  messages are only being sent only to each other and printed only once
+	//There's nothing wrong with the messageListener class, but there's probably something off about the sendMess class in the actionListner
+	//Ask how to check those lines of code in debug mode
 	
 }
 	
