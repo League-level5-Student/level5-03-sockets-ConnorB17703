@@ -86,12 +86,14 @@ public class Server {
 	public void sendMess(String message){
 		
 		try{
-			if(os != null){
+//			if(os != null){
 				os.writeObject(message);
+				//System.err.println("sent message");
 				os.flush();
-			}
+//			}
 		}catch(IOException e){
 			e.printStackTrace();
+			
 		}
 		
 	}
@@ -115,7 +117,7 @@ public class Server {
 			try {
 				Object in = is.readObject();
 				//JOptionPane.showMessageDialog(null, in);
-				System.out.println(in);
+				System.err.println(in);
 				
 				
 				
@@ -123,8 +125,9 @@ public class Server {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 	}
-
+		System.err.println("loop exited");
 
 
 

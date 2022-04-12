@@ -62,10 +62,11 @@ public class Client {
 	public void sendMess(String message){
 		
 		try{
-			if(os != null){
+//			if(os != null){
 				os.writeObject(message);
+				//System.err.println("sent message");
 				os.flush();
-			}
+//			}
 		}catch(IOException e){
 			e.printStackTrace();
 		}
@@ -92,7 +93,7 @@ public class Client {
 			try {
 				Object in = is.readObject();
 				//JOptionPane.showMessageDialog(null, in);
-				System.out.println(in);
+				System.err.println(in);
 			
 
 				
@@ -103,6 +104,7 @@ public class Client {
 			}
 		
 	}
+		System.err.println("loop exited");
 }
 
 

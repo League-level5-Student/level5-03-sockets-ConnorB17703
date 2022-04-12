@@ -33,9 +33,8 @@ public class ChatApp implements ActionListener {
 	
 public static void main(String[] args) {
 	new ChatApp(); 
-	//There's no more errors, but the  messages are only being sent only to each other and printed only once
-	//There's nothing wrong with the messageListener class, but there's probably something off about the sendMess class in the actionListner
-	//Ask how to check those lines of code in debug mode
+	//now that they are both able to send messages to each other, you just need to figure out how 
+	//to make it appear and look good on the window
 	
 }
 	
@@ -118,17 +117,20 @@ public static void main(String[] args) {
 			
 			messageSent = true;
 			
-		}else{
+		}else if(messageSent == true){
+			//System.out.println("second else block");
 			
 			if(frame.getTitle().equals("Chat App: Server")){
-			textArea.setText("Server: " + textField.getText());
-//			severInput = textArea.getText();
-//			server.sendMess(severInput);
+			textArea.append("Server: " + textField.getText() + "\n");
+			severInput = textArea.getText();
+			server.sendMess(severInput);
+			
 			}else{
 			
-			textArea.setText("Client: " + textField.getText());
-//			client.sendMess(clientInput);
-//			messageSent = true;
+			textArea.append("Client: " + textField.getText() + "\n");
+			clientInput = textArea.getText();
+			client.sendMess(clientInput);
+			messageSent = true;
 			}
 		}
 		
