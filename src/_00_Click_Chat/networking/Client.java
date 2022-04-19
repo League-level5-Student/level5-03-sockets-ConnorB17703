@@ -66,6 +66,8 @@ public class Client {
 				os.writeObject(message);
 				//System.err.println("sent message");
 				os.flush();
+				//System.err.println(message);
+
 //			}
 		}catch(IOException e){
 			e.printStackTrace();

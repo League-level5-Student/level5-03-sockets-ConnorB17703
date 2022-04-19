@@ -34,7 +34,8 @@ public class ChatApp implements ActionListener {
 public static void main(String[] args) {
 	new ChatApp(); 
 	//now that they are both able to send messages to each other, you just need to figure out how 
-	//to make it appear and look good on the window
+	//to make it appear and look good on the window. Currently, I want to try to get both the server and 
+	//client to see the same messages. But, each side only shows what the other side sent.
 	
 }
 	
@@ -109,10 +110,12 @@ public static void main(String[] args) {
 			if(frame.getTitle().equals("Chat App: Server")){
 			severInput = textField.getText();
 			server.sendMess(severInput);
+				//textArea.append("Server: " + textField.getText() + "\n");
 			
 			}else{
 			clientInput = textField.getText();
 			client.sendMess(clientInput);
+				//textArea.append("Client: " + textField.getText() + "\n");
 			}
 			
 			messageSent = true;
