@@ -8,6 +8,8 @@ import java.net.UnknownHostException;
 
 import javax.swing.JOptionPane;
 
+import _02_Chat_Application.MessageManager;
+
 public class Client {
 	private String ip;
 	private int port;
@@ -16,10 +18,12 @@ public class Client {
 
 	ObjectOutputStream os;
 	ObjectInputStream is;
+	MessageManager mm;
 
-	public Client(String ip, int port) {
+	public Client(String ip, int port, MessageManager mm) {
 		this.ip = ip;
 		this.port = port;
+		this.mm = mm;
 	}
 
 	public void start(){
@@ -96,7 +100,7 @@ public class Client {
 				Object in = is.readObject();
 				//JOptionPane.showMessageDialog(null, in);
 				System.err.println(in);
-			
+			mm.receiveMess((String)in);
 
 				
 				

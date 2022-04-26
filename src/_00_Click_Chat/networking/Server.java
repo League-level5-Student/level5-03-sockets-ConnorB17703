@@ -11,6 +11,8 @@ import java.net.UnknownHostException;
 
 import javax.swing.JOptionPane;
 
+import _02_Chat_Application.MessageManager;
+
 public class Server {
 	private int port;
 
@@ -19,9 +21,12 @@ public class Server {
 
 	ObjectOutputStream os;
 	ObjectInputStream is;
+	
+	MessageManager mm;
 
-	public Server(int port) {
+	public Server(int port, MessageManager mm) {
 		this.port = port;
+		this.mm = mm;
 	}
 
 	public void start(){
@@ -118,7 +123,7 @@ public class Server {
 				Object in = is.readObject();
 				//JOptionPane.showMessageDialog(null, in);
 				System.err.println(in);
-				
+				mm.receiveMess((String)in);
 				
 				
 			} catch (Exception e) {

@@ -30,12 +30,23 @@ public class ChatApp implements ActionListener {
 	JButton button;
 	JTextField textField;
 	JTextArea textArea;
+	MessageManager MM = new MessageManager() {
+		
+		@Override
+		public void receiveMess(String message) {
+			// TODO Auto-generated method stub
+			if(frame.getTitle().equals("Chat App: Server")){
+				textArea.append("Server: " + message + "\n");
+			
+			}else{
+				textArea.append("Client: " + message + "\n");
+			}
+		}
+	};
 	
 public static void main(String[] args) {
 	new ChatApp(); 
-	//now that they are both able to send messages to each other, you just need to figure out how 
-	//to make it appear and look good on the window. Currently, I want to try to get both the server and 
-	//client to see the same messages. But, each side only shows what the other side sent.
+	//fix that bug with the log
 	
 }
 	
@@ -64,8 +75,9 @@ public static void main(String[] args) {
 			frame.setVisible(true);
 			frame.setTitle("Chat App: Server");
 			
-			server = new Server(8080);
+			server = new Server(8080, MM);
 			server.start();
+			
 //			if(messageSent == false){
 //				severInput = textField.getText();
 //				server.sendMess(severInput);
@@ -85,7 +97,7 @@ public static void main(String[] args) {
 			frame.setTitle("Chat App: Client");
 			
 			int port = Integer.parseInt(portSTR);
-			client = new Client(ipSTR, port);
+			client = new Client(ipSTR, port, MM);
 			client.start();
 			//System.out.println("Client created");
 //			if(messageSent == false){
@@ -105,39 +117,44 @@ public static void main(String[] args) {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		if(messageSent == false){
+		
 			
 			if(frame.getTitle().equals("Chat App: Server")){
+			textArea.append("Server: " + textField.getText() + "\n");
 			severInput = textField.getText();
 			server.sendMess(severInput);
 				//textArea.append("Server: " + textField.getText() + "\n");
 			
 			}else{
+			textArea.append("Client: " + textField.getText() + "\n");
 			clientInput = textField.getText();
 			client.sendMess(clientInput);
 				//textArea.append("Client: " + textField.getText() + "\n");
 			}
 			
-			messageSent = true;
+			//messageSent = true;
 			
-		}else if(messageSent == true){
+		
 			//System.out.println("second else block");
 			
-			if(frame.getTitle().equals("Chat App: Server")){
-			textArea.append("Server: " + textField.getText() + "\n");
-			severInput = textArea.getText();
-			server.sendMess(severInput);
+//			if(frame.getTitle().equals("Chat App: Server")){
+//			textArea.append("Server: " + textField.getText() + "\n");
+//			severInput = textArea.getText();
+//			server.sendMess(severInput);
+//			//client.sendMess(severInput);
+//
+//			
+//		
+//			
+//			textArea.append("Client: " + textField.getText() + "\n");
+//			clientInput = textArea.getText();
+//			client.sendMess(clientInput);
+			//server.sendMess(clientInput);
 			
-			}else{
-			
-			textArea.append("Client: " + textField.getText() + "\n");
-			clientInput = textArea.getText();
-			client.sendMess(clientInput);
-			messageSent = true;
 			}
 		}
 		
 	
-		}
 		
-}
+		
+
