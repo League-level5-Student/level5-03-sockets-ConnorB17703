@@ -19,6 +19,7 @@ public class Client {
 	ObjectOutputStream os;
 	ObjectInputStream is;
 	MessageManager mm;
+	public boolean clientSent;
 
 	public Client(String ip, int port, MessageManager mm) {
 		this.ip = ip;

@@ -23,7 +23,9 @@ public class ChatApp implements ActionListener {
 	String severInput;
 	Client client; 
 	String clientInput;
-	boolean messageSent;
+	boolean clientSent;
+	boolean serverSent;
+	
 	
 	JFrame frame;
 	JPanel panel;
@@ -36,11 +38,11 @@ public class ChatApp implements ActionListener {
 		public void receiveMess(String message) {
 			// TODO Auto-generated method stub
 			if(frame.getTitle().equals("Chat App: Server")){
-				textArea.append("Server: " + message + "\n");
-			
-			}else{
 				textArea.append("Client: " + message + "\n");
+			}else{
+				textArea.append("Server: " + message + "\n");
 			}
+			
 		}
 	};
 	
@@ -123,12 +125,14 @@ public static void main(String[] args) {
 			textArea.append("Server: " + textField.getText() + "\n");
 			severInput = textField.getText();
 			server.sendMess(severInput);
+			serverSent = true;
 				//textArea.append("Server: " + textField.getText() + "\n");
 			
 			}else{
 			textArea.append("Client: " + textField.getText() + "\n");
 			clientInput = textField.getText();
 			client.sendMess(clientInput);
+			clientSent = true;
 				//textArea.append("Client: " + textField.getText() + "\n");
 			}
 			
